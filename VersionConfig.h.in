@@ -1,0 +1,6 @@
+#ifndef APPLICATION_VERSION
+
+// the configured options and settings for Tutorial
+#define APPLICATION_VERSION "@ContentSearcherQt_VERSION@"
+
+#endif //APPLICATION_VERSION
