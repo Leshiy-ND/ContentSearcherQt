@@ -69,3 +69,5 @@ install(TARGETS ContentSearcherQt
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(ContentSearcherQt)
 endif()
+
+add_subdirectory(tests)
