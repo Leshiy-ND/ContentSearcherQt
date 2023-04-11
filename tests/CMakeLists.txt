@@ -14,20 +14,20 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 set(PROJECT_SOURCES
-	"${PROJECT_SOURCE_DIR}/../ConverterJSON.hpp"
-	"${PROJECT_SOURCE_DIR}/../ConverterJSON.cpp"
-	"${PROJECT_SOURCE_DIR}/../InvertedIndex.hpp"
-	"${PROJECT_SOURCE_DIR}/../InvertedIndex.cpp"
-	"${PROJECT_SOURCE_DIR}/../SearchServer.hpp"
-	"${PROJECT_SOURCE_DIR}/../SearchServer.cpp"
+	"${CMAKE_SOURCE_DIR}/ConverterJSON.hpp"
+	"${CMAKE_SOURCE_DIR}/ConverterJSON.cpp"
+	"${CMAKE_SOURCE_DIR}/InvertedIndex.hpp"
+	"${CMAKE_SOURCE_DIR}/InvertedIndex.cpp"
+	"${CMAKE_SOURCE_DIR}/SearchServer.hpp"
+	"${CMAKE_SOURCE_DIR}/SearchServer.cpp"
 )
 
-file(GLOB TESTS "${PROJECT_SOURCE_DIR}/*.cpp")
+file(GLOB TESTS "${CMAKE_SOURCE_DIR}/tests/*.cpp")
 
-add_executable(ContentSearcher_tst ${HEADERS} ${PROJECT_SOURCES} ${TESTS})
+add_executable(ContentSearcher_tst ${PROJECT_SOURCES} ${TESTS})
 
 target_include_directories(ContentSearcher_tst PUBLIC
-        "${PROJECT_SOURCE_DIR}/.."
+        "${CMAKE_SOURCE_DIR}"
         "${PROJECT_BINARY_DIR}/.."
 )
 
