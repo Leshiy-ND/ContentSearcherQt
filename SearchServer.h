@@ -1,9 +1,9 @@
-#ifndef CONTENTSEARCHER_SEARCHSERVER_HPP
-#define CONTENTSEARCHER_SEARCHSERVER_HPP
+#ifndef CONTENTSEARCHER_SEARCHSERVER_H
+#define CONTENTSEARCHER_SEARCHSERVER_H
 
 #include <vector>
 #include <string>
-#include "InvertedIndex.hpp"
+#include "InvertedIndex.h"
 
 
 struct RelativeIndex
@@ -40,4 +40,4 @@ public:
 };
 
 
-#endif //CONTENTSEARCHER_SEARCHSERVER_HPP
+#endif //CONTENTSEARCHER_SEARCHSERVER_H

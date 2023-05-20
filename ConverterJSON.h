@@ -1,11 +1,10 @@
-#ifndef CONVERTERJSON_HPP
-#define CONVERTERJSON_HPP
-
+#ifndef CONTENTSEARCHER_CONVERTERJSON_H
+#define CONTENTSEARCHER_CONVERTERJSON_H
 
 #include <vector>
 #include <string>
 #include <nlohmann/json.hpp>
-#include "SearchServer.hpp"
+#include "SearchServer.h"
 using Json = nlohmann::json;
 
 /**
@@ -13,35 +12,40 @@ using Json = nlohmann::json;
 */
 class ConverterJSON {
 private:
-    /**
+	/**
 	* Метод удостоверения в наличии и полноте файла config.json
 	* @throws std::logic_error с указанием отсутствия или пустоты файла
 	* @exceptsafe Strong - программа завершается, ни на что не влияя
 	* @return Возвращает структурированный Json-объект
 	*/
-    static Json ReadConfigSafely();
+	static Json ReadConfigSafely();
 
 public:
-    ConverterJSON() = default;
-    /**
+	ConverterJSON() = default;
+
+	/**
 	* Метод получения содержимого файлов
 	* @return Возвращает список с содержимым файлов перечисленных
 	* в config.json
 	*/
-    static std::vector<std::string> GetTextDocuments();
-    /**
+	static std::vector<std::string> GetTextDocuments();
+
+	/**
 	* Метод считывает поле max_responses для определения
 	* @return Возвращает предельное количества ответов на один запрос
 	*/
-    static int GetResponsesLimit();
-    /**
+	static int GetResponsesLimit();
+
+	/**
 	* Метод получения запросов из файла requests.json
 	* @return Возвращает список запросов из файла requests.json
 	*/
-    static std::vector<std::string> GetRequests();
-    /**
+	static std::vector<std::string> GetRequests();
+	
+	/**
 	* Положить в файл answers.json результаты поисковых запросов
 	*/
-    static void PutAnswers(const std::vector<std::vector<RelativeIndex>>& answers);
+	static void PutAnswers(const std::vector<std::vector<RelativeIndex>>& answers);
 };
-#endif // CONVERTERJSON_HPP
+
+#endif //CONTENTSEARCHER_CONVERTERJSON_H

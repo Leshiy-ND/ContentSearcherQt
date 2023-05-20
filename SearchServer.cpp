@@ -1,9 +1,9 @@
-#include "SearchServer.hpp"
+#include "SearchServer.h"
 
 #include <map>
 #include <set>
 #include <cmath>
-#include "ConverterJSON.hpp"
+#include "ConverterJSON.h"
 
 
 bool RelativeIndex::operator==(const RelativeIndex& other) const
