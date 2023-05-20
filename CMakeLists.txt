@@ -17,59 +17,64 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
 
 include(FetchContent)
 FetchContent_Declare(
-        json
-        URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
+		json
+		URL https://github.com/nlohmann/json/releases/download/v3.11.2/json.tar.xz
 )
 FetchContent_MakeAvailable(json)
 
 set(PROJECT_SOURCES
-	ConverterJSON.hpp
-	ConverterJSON.cpp
-	InvertedIndex.hpp
-	InvertedIndex.cpp
-	SearchServer.hpp
-	SearchServer.cpp
-        main.cpp
-        mainwindow.cpp
-        mainwindow.h
-        mainwindow.ui
+		ConverterJSON.h
+		ConverterJSON.cpp
+		InvertedIndex.h
+		InvertedIndex.cpp
+		SearchServer.h
+		SearchServer.cpp
+
+		atomic_queue.hpp
+		thread_pool.h
+		thread_pool.cpp
+
+		main.cpp
+		mainwindow.cpp
+		mainwindow.h
+		mainwindow.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(ContentSearcherQt
-	    MANUAL_FINALIZATION
-	    ${PROJECT_SOURCES}
-    )
+	qt_add_executable(ContentSearcherQt
+			MANUAL_FINALIZATION
+			${PROJECT_SOURCES}
+	)
 else()
-    add_executable(ContentSearcherQt
-	    ${PROJECT_SOURCES}
-    )
+	add_executable(ContentSearcherQt
+			${PROJECT_SOURCES}
+	)
 endif()
 
 target_include_directories(ContentSearcherQt PUBLIC
-        "${PROJECT_BINARY_DIR}"
+		"${PROJECT_BINARY_DIR}"
 )
 
 target_link_libraries(ContentSearcherQt PRIVATE
-	nlohmann_json::nlohmann_json
-	Qt${QT_VERSION_MAJOR}::Widgets
+		nlohmann_json::nlohmann_json
+		Qt${QT_VERSION_MAJOR}::Widgets
 )
 
 set_target_properties(ContentSearcherQt PROPERTIES
-	MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-	MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-	MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
-	MACOSX_BUNDLE TRUE
-	WIN32_EXECUTABLE TRUE
+		MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
+		MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
+		MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+		MACOSX_BUNDLE TRUE
+		WIN32_EXECUTABLE TRUE
 )
 
 install(TARGETS ContentSearcherQt
-	BUNDLE DESTINATION .
-	LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+		BUNDLE DESTINATION .
+		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
 )
 
 if(QT_VERSION_MAJOR EQUAL 6)
-    qt_finalize_executable(ContentSearcherQt)
+		qt_finalize_executable(ContentSearcherQt)
 endif()
 
 add_subdirectory(tests)
