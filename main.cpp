@@ -3,27 +3,27 @@
 #include <QApplication>
 
 #include <iostream>
-#include "ConverterJSON.hpp"
-#include "InvertedIndex.hpp"
-#include "SearchServer.hpp"
+//#include "ConverterJSON.hpp"
+//#include "InvertedIndex.hpp"
+//#include "SearchServer.hpp"
 
 int main(int argc, char *argv[])
 {
-    try
-    {
-        InvertedIndex idx;
-        idx.UpdateDocumentBase(ConverterJSON::GetTextDocuments());
+//    try
+//    {
+//        InvertedIndex idx;
+//        idx.UpdateDocumentBase(ConverterJSON::GetTextDocuments());
 
-        SearchServer server(idx);
-        auto answers = server.search(ConverterJSON::GetRequests());
+//        SearchServer server(idx);
+//        auto answers = server.search(ConverterJSON::GetRequests());
 
-        ConverterJSON::PutAnswers(answers);
-    }
-    catch (const std::exception &x)
-    {
-        std::cerr << "[ERROR]: " << x.what() << std::endl;
-        return 64;
-    }
+//        ConverterJSON::PutAnswers(answers);
+//    }
+//    catch (const std::exception &x)
+//    {
+//        std::cerr << "[ERROR]: " << x.what() << std::endl;
+//        return 64;
+//    }
     QApplication a(argc, argv);
     MainWindow w;
     w.show();

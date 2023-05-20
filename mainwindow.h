@@ -17,5 +17,6 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    void renameSelf();
 };
 #endif // MAINWINDOW_H
